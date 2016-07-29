@@ -1,8 +1,8 @@
 class PageController < ApplicationController
   def index
-    @picture = Picture.new
-    @pictures = Picture.all
     redirect_to register_path if session[:user_id].nil?
+    @picture = Picture.new
+    @pictures = Picture.where(user: current_user)
   end
 
   def secret
